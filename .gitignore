@@ -1,0 +1,14 @@
+# Build artifacts
+*.apk
+*.aab
+build/
+.gradle/
+.idea/
+.vscode/
+*.iml
+local.properties
+.key.properties
+.dart_tool/
+.flutter-plugins*
+.packages
+pubspec.lock
