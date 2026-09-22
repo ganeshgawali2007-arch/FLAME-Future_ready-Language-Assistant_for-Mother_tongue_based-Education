@@ -1,7 +1,24 @@
 # FLAME — Future-ready Language Assistant for Mother-tongue based Education
 
-> **Smart India Hackathon 2026 — Team ForestFlame**
-> **Problem Statement 26042: AI-Powered Vernacular Pedagogy and Real-Time Translation Tool for Mother Tongue-Based Primary Education**
+<p align="center">
+  <img alt="SIH 2026" src="https://img.shields.io/badge/SIH-2026-orange?style=for-the-badge">
+  <img alt="Team ForestFlame" src="https://img.shields.io/badge/Team-ForestFlame-green?style=for-the-badge">
+  <img alt="Release v1.0.0" src="https://img.shields.io/badge/release-v1.0.0-green?style=for-the-badge">
+  <img alt="Offline-first" src="https://img.shields.io/badge/offline--first-no_internet-blue?style=for-the-badge">
+  <img alt="License MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge">
+</p>
+<p align="center">
+  <img alt="Flutter" src="https://img.shields.io/badge/Flutter-02569B?style=for-the-badge&logo=flutter&logoColor=white">
+  <img alt="Dart" src="https://img.shields.io/badge/Dart-0175C2?style=for-the-badge&logo=dart&logoColor=white">
+  <img alt="Android" src="https://img.shields.io/badge/Android-3DDC84?style=for-the-badge&logo=android&logoColor=white">
+  <img alt="ONNX Runtime" src="https://img.shields.io/badge/ONNX%20Runtime-005CED?style=for-the-badge&logo=onnx&logoColor=white">
+  <img alt="Vosk Offline Speech" src="https://img.shields.io/badge/Vosk%20Offline%20STT-6C5CE7?style=for-the-badge">
+  <img alt="SQLite" src="https://img.shields.io/badge/SQLite-003B57?style=for-the-badge&logo=sqlite&logoColor=white">
+</p>
+
+> **Smart India Hackathon 2026 · Problem Statement 26042**
+> **AI-Powered Vernacular Pedagogy and Real-Time Translation Tool for Mother Tongue-Based Primary Education**
+> Theme: Smart Education · Category: Software · Team ID: 142623 · Team: ForestFlame
 > Package `com.flame.flame` · Version `1.0.0+1` · Android 7.0+ (API 24) · Offline-first · 2GB+ RAM tablets
 
 <div align="center">
@@ -23,6 +40,28 @@ Teacher hosts a class on one phone, students join from their phones over the sam
 - 🌐 **No internet required** — ASR/NMT/TTS run on-device; LAN text-only sync
 - 🔤 **Ol Chiki rendering** — bundled `NotoSansOlChiki.ttf`
 
+## ❌ Core problem (from SIH deck)
+
+1. **Language mismatch** — teacher speaks Hindi, students speak Santali / Ho / Mundari.
+2. **Teacher shortage** — ~80% mapped PALASH schools report moderate-severe learning challenges from the language gap.
+3. **Mixed classroom** — one class, many mother tongues.
+
+Pipeline: **Recognize (ASR) → Translate (NMT) → Speak (TTS)**. Teacher knows the curriculum but not the mother tongue — FLAME converts instruction into the learner's language. Teacher phone acts as broadcaster.
+
+## ✅ Ground validation (existing evidence)
+
+- 19 students tested at a Zilla Parishad govt. school in Marathi + English + teacher interviews — 19/19 performed better in their familiar language; consistent drop in non-mother-tongue assessment.
+- Google Meet with a Santali professor — dialect + Ol Chiki/Devanagari script-fragmentation inputs.
+- Full field data: see Drive folder linked below. Prototype already tested offline in real life (GitHub + demo video links below).
+
+## 🖼️ Screenshots (real device)
+
+| Welcome | Language | Teacher waiting (QR) | Teacher live |
+|---------|----------|----------------------|--------------|
+| ![Welcome](docs/screenshots/02-welcome.jpg) | ![Language](docs/screenshots/04-language.jpg) | ![Waiting](docs/screenshots/09-teacher-waiting.jpg) | ![Live](docs/screenshots/10-teacher-live.jpg) |
+
+More slots + capture guide: [`docs/screenshots/README.md`](docs/screenshots/README.md).
+
 ## 📦 Download
 
 > APK only — no build required. Sideload it (enable *Install unknown apps*).
@@ -32,6 +71,8 @@ Teacher hosts a class on one phone, students join from their phones over the sam
 | [v1.0.0 · FLAME-v1.0.0.apk][release] | `com.flame.flame` | Android 7.0 (API 24) |
 
 [release]: https://github.com/ganeshgawali2007-arch/FLAME-Future_ready-Language-Assistant_for-Mother_tongue_based-Education/releases/latest
+
+Demo video (multi-device + latency) and field data: see **Links** section below.
 
 ## 🛠️ Tech Stack
 
@@ -47,26 +88,15 @@ Teacher hosts a class on one phone, students join from their phones over the sam
 
 Native bridges: `MainActivity.kt`, `VoskAsrSession.kt`, `OnnxNmtSession.kt`, `SatTtsSession.kt` in `android/app/src/main/kotlin/com/flame/flame/`.
 
-## 🚀 Getting Started
+Tech workflow (classroom): Voice Capture → ASR (Hindi) → Translation (Hindi→Tribal) → TTS (Tribal) → Audio Playback → Personalised output → Replay & Cache. Teacher: Create Session → Show Code+QR → Start; Student: Discover (UDP broadcast) → Receive → TCP Connect & Join — LAN only, no cloud.
 
-1. Install **Flutter** (stable, SDK `^3.13.3`).
-2. Clone:
-   ```bash
-   git clone https://github.com/ganeshgawali2007-arch/FLAME-Future_ready-Language-Assistant_for-Mother_tongue_based-Education.git
-   cd FLAME-Future_ready-Language-Assistant_for-Mother_tongue_based-Education
-   ```
-3. Run:
-   ```bash
-   flutter pub get
-   flutter analyze
-   flutter test
-   flutter run
-   ```
-4. Release:
-   ```bash
-   flutter build apk --release --split-per-abi   # lean per-device
-   flutter build apk --release                   # fat APK
-   ```
+## 💡 Key innovations — done vs planned
+
+- ✅ Per-student personalisation — each student device renders its preferred language output (implemented for Santhali).
+- ✅ Multilingual support — **Santali implemented in prototype**; Mundari + Ho planned (same pipeline, new packs).
+- ✅ Curriculum-aligned NLP — lesson scripts from validated curriculum assets (SQLite seed + phrasebook).
+- ✅ Offline voice-bot fallback — Ask FLAME runs pre-scripted curriculum Q&A offline.
+- ⚠️ Worksheets / flashcards / story-book PDF — seed tables exist, no dedicated UI yet (see `docs/` reports pattern).
 
 ## 📦 Models — what ships vs side-load
 
@@ -78,7 +108,7 @@ Native bridges: `MainActivity.kt`, `VoskAsrSession.kt`, `OnnxNmtSession.kt`, `Sa
 | Santhali Piper (`sat_piper_model.onnx` + `.json`) | ❌ **not in git** | ~60 MB + JSON | **GitHub Release** `sat-tts-voice-pack.zip` → `.../files/sat_tts_voice/` → Settings → Check |
 | Hindi `hi-IN` voice | device system TTS | — | Android Settings → TTS → install hi-IN data |
 
-Do not commit `*.onnx`, `*.onnx.data`, `*.apk` to git — attach to Releases (2 GB limit). See `docs/MODELS.md`.
+Do not commit `*.onnx`, `*.onnx.data`, `*.apk` to git — attach to Releases (2 GB limit). See `docs/MODELS.md`. RAM rule: models lazy-load per screen and release after session, so 2GB+ tablets hold only the active pipeline.
 
 ## ⚡ Latency benchmarks (18 Sept 2026)
 
@@ -101,9 +131,54 @@ Device checks: cold start avg ~3026 ms (6 runs); Vosk extract 0.29 s.
 
 Same Wi-Fi / hotspot only. Teacher hosts ephemeral TCP + UDP `:40404`; student broadcasts `FLAME1 DISCOVER <CODE>`, gets `FLAME1 OFFER <port> <token>`, joins via TCP JSON (`join`/`joinAck` with 6-char code + 12-char token). Live turns are newline-JSON text (`turn` with `cid`/`seq`), relayed teacher→students, each side re-translates + re-speaks locally. Full spec: [`docs/OFFLINE_CONNECTIVITY.md`](docs/OFFLINE_CONNECTIVITY.md).
 
-## 🖼️ UI screenshots
+## 🚀 Getting Started
 
-Placeholders + capture guide: [`docs/screenshots/README.md`](docs/screenshots/README.md). 17 routes: splash, welcome, role, language, offline-setup, home, create-class, lesson-select, teacher-classroom (waiting/live), join, student-waiting, student-classroom, live-session, summary, ask-flame, settings, my-classes.
+1. Install **Flutter** (stable, SDK `^3.13.3`).
+2. Clone:
+   ```bash
+   git clone https://github.com/ganeshgawali2007-arch/FLAME-Future_ready-Language-Assistant_for-Mother_tongue_based-Education.git
+   cd FLAME-Future_ready-Language-Assistant_for-Mother_tongue_based-Education
+   ```
+3. Run:
+   ```bash
+   flutter pub get
+   flutter analyze
+   flutter test
+   flutter run
+   ```
+4. Release:
+   ```bash
+   flutter build apk --release --split-per-abi   # lean per-device
+   flutter build apk --release                   # fat APK
+   ```
+
+## 🗺️ Feasibility, risks, scale
+
+- **Build:** one tribal language first (Santali), Hindi→tribal, ≤3 s target, offline, low-cost Android.
+- **Validate:** native speaker → language data → AI translation (IndicTrans2) → native validation → approved curriculum.
+- **Deploy via PALASH footprint:** 1000+ govt primary schools, 8 districts, Santhali now, Mundari/Ho next, FLN focus + teacher capacity building.
+- **What can break scale:** limited parallel data → native-speaker corpus; script/dialect variation → multi-script validation; speech/TTS quality → human-verified audio; rural trust → teacher/community feedback.
+- **Roadmap:** Pilot Grades 1–3 → Validate with speakers+teachers → Expand curriculum → Language scale Santhali→Ho→Mundari → Institutional scale.
+- **Why viable:** Android = low deploy cost; one validated asset → lesson + audio + worksheet + flashcards; classroom corrections feed future data.
+
+## 💥 Impact
+
+- Familiar-language learning, teacher reach (one Hindi teacher → many mother tongues), offline inclusion (≤2GB tablets, no connectivity block), scalable language packs.
+- Scenario: Hindi-fluent teacher posted to Class 2–3 in Jharkhand tribal belt, students know only Ho/Mundari/Santali — FLAME bridges in real time so no classroom is lost in translation.
+
+## 📚 Research & Links
+
+- Bhasha Matters / PALASH — UNESCO Education Report India 2025 (`unesdoc.unesco.org`)
+- Adi-Vaani — Ministry of Tribal Affairs AI translator (`drishtiias.com`)
+- PALASH — 1,041 schools, 8 districts, JEPC (`news.careers360.com`)
+- BHASHINI — National Language Translation Mission, MeitY (`bankersadda.com`)
+- IndicTrans2 & ByT5 for English–Santali — ACL Anthology 2025 (`aclanthology.org`)
+- MunTTS Mundari TTS — arXiv 2024 (`arxiv.org/abs/2401.15579`)
+- AdiBhashaa benchmark — arXiv 2025 (`arxiv.org/pdf/2512.04765`)
+- Project Karya — annotated Indian-language text (`karya.in`)
+- Field data Drive: `https://drive.google.com/drive/folders/1-PYwwVxpBwyPiazHf608AoCvuhC_eFnJ?usp=sharing`
+- Prototype repo: `https://github.com/ganeshgawali2007-arch/FLAME-Future_ready-Language-Assistant_for-Mother_tongue_based-Education`
+- Demo video (YouTube): _add link_ — multi-device connectivity + latency demo referenced in deck.
 
 ## 🗂️ Project structure
 
