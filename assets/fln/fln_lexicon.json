@@ -1,0 +1,52 @@
+[
+  {
+    "id": "j001",
+    "hindi": "सभी छात्र अपनी सीट पर बैठ जाओ",
+    "santhali": "Sab chhatra apni seat re busa.",
+    "ol_chiki": "ᱫᱩᱲᱩᱵ ᱢᱮ",
+    "pronunciation": "sab chatra apni seat par baitho",
+    "grade": "1",
+    "subject": "General",
+    "category": "Discipline"
+  },
+  {
+    "id": "j002",
+    "hindi": "आज हम सब मिलकर चित्र बनाएंगे",
+    "santhali": "Tehen aab be banava.",
+    "ol_chiki": "ᱛᱮᱦᱮᱧ ᱟᱵᱚ ᱵᱚ ᱵᱮᱱᱟᱣ",
+    "pronunciation": "tehen aab be banava",
+    "grade": "1",
+    "subject": "Arts",
+    "category": "Activity"
+  },
+  {
+    "id": "j003",
+    "hindi": "हाथ साफ करके खाना खाओ",
+    "santhali": "Ti arub korme jom me.",
+    "ol_chiki": "ᱛᱤ ᱟᱹᱨᱩᱵ ᱠᱳᱨᱢᱮ ᱡᱚᱢ",
+    "pronunciation": "ti arub korme jom me",
+    "grade": "2",
+    "subject": "Health",
+    "category": "Routine"
+  },
+  {
+    "id": "j004",
+    "hindi": "जल्दी से अपनी पेंसिल निकालो",
+    "santhali": "Aenke apni pengil nikalo.",
+    "ol_chiki": "ᱯᱮᱱᱥᱤᱞ ᱠᱷᱩᱞ",
+    "pronunciation": "aenke apni pencil nikalo",
+    "grade": "1",
+    "subject": "Literacy",
+    "category": "Instruction"
+  },
+  {
+    "id": "j005",
+    "hindi": "आज हम एक नई कहानी पढ़ेंगे",
+    "santhali": "Tehen aab gerek kahani padha.",
+    "ol_chiki": "ᱠᱩᱠᱷ",
+    "pronunciation": "tehen aab gerek kahani parhenge",
+    "grade": "2",
+    "subject": "Literacy",
+    "category": "Activity"
+  }
+]
