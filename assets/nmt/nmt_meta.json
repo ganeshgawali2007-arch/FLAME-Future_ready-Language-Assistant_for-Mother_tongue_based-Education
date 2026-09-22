@@ -1,0 +1,8 @@
+{
+ "src_dict_size": 122706,
+ "tgt_dict_size": 122672,
+ "bos_token_id": 0,
+ "eos_token_id": 2,
+ "decoder_start_token_id": 2,
+ "max_length": 256
+}
