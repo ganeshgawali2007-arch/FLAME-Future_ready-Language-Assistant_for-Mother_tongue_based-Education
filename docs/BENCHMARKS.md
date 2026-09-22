@@ -1,12 +1,12 @@
 # FLAME End-to-End Latency Benchmark
 
-Offline Hindi → Santhali voice-to-voice prototype · Benchmark date: 18 September 2026
+Offline Hindi -> Santhali voice-to-voice prototype - Benchmark date: 18 September 2026
 
 ## 1. Benchmark Configuration
 
 | Item | Measured configuration |
 |------|------------------------|
-| Device | ASUS_I003DD — Qualcomm SM8250 “kona” / Snapdragon 865-series, 8-core CPU, Android 12 API 31 |
+| Device | ASUS_I003DD - Qualcomm SM8250 "kona" / Snapdragon 865-series, 8-core CPU, Android 12 API 31 |
 | Application | FLAME com.flame.flame v1.0.0, debug APK, versionCode 1 |
 | Measurement method | Physical hardware; USB/adb driven; production-path self-tests and on-device shell measurements |
 | ASR | Vosk Hindi small-hi-0.22 |
@@ -17,7 +17,7 @@ Offline Hindi → Santhali voice-to-voice prototype · Benchmark date: 18 Septem
 
 | Stage | Actual input | Actual output | Measured latency |
 |-------|--------------|---------------|------------------|
-| ASR | Real Hindi speech — 4.44 s utterance | चारो किताब को लो | 370 ms model load + 870 ms recognition |
+| ASR | Real Hindi speech - 4.44 s utterance | चारो किताब को लो | 370 ms model load + 870 ms recognition |
 | NMT | चारो किताब को लो | Ol Chiki Santhali (see §3 pattern) | 134 ms |
 | TTS | Ol Chiki Santhali | Real 1.49 s Santhali WAV; non-silence, peak 0.62 | 60 ms synthesis |
 | Full cycle | 4.44 s real Hindi speech | 1.49 s real Santhali speech | ~1.9 s wall-clock |
@@ -34,7 +34,7 @@ Offline Hindi → Santhali voice-to-voice prototype · Benchmark date: 18 Septem
 | 6 | अपना नाम बताओ। | 63.7 ms |
 | 7 | धन्यवाद, अब तुम बैठ सकते हो। | 108.1 ms |
 
-NMT total input/output: 63.7–138.5 ms; average 93 ms across 7 real classroom sentences.
+NMT total input/output: 63.7-138.5 ms; average 93 ms across 7 real classroom sentences.
 
 ## 4. Latency Budget
 
@@ -58,11 +58,11 @@ NMT total input/output: 63.7–138.5 ms; average 93 ms across 7 real classroom s
 | Test | ASUS_I003DD result |
 |------|--------------------|
 | Cold start | 6 runs: 3021 / 3024 / 3026 / 3027 / 3029 / 3044 ms; average ~3026 ms |
-| Vosk model extraction | 42 MB zip → 78 MB unpacked in 0.29 s |
+| Vosk model extraction | 42 MB zip -> 78 MB unpacked in 0.29 s |
 | NMT INT8 pack | Absent on ASUS during this session; pack resolution probe <100 ms, complete=false |
 | Santhali TTS pack | Absent on ASUS during this session; expected sat_piper_model.onnx ~60 MB + JSON |
 | Hindi system TTS | hi-IN voice data not installed; measured attempts failed with engineError -4 |
-| On-device NMT reference | Prior Motorola Edge 60 Pro measurements with packs: 150–535 ms/sentence INT8 |
+| On-device NMT reference | Prior Motorola Edge 60 Pro measurements with packs: 150-535 ms/sentence INT8 |
 
 ## 7. Honest Caveats
 
